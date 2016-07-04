@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TubuApp</string>
+
+    <!-- 主页面fragment名称集合 -->
+    <string-array name="main_tab_fragment_names">
+        <item>动态</item>
+        <item>商城</item>
+        <item>运动</item>
+        <item>发现</item>
+        <item>我的</item>
+    </string-array>
+</resources>
