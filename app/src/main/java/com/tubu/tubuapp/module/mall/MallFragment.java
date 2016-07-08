@@ -54,4 +54,15 @@ public class MallFragment extends BaseTabFragment<Toolbar> implements TabListene
                 break;
         }
     }
+
+    @Override
+    public void onSelected() {
+        super.onSelected();
+        titlebar.setTitle("Mall");
+    }
+
+    @Override
+    public void setTitlebar(Toolbar titlebar) {
+        super.setTitlebar(titlebar);
+    }
 }

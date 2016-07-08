@@ -51,4 +51,15 @@ public class DiscoverFragment extends BaseTabFragment<Toolbar> implements TabLis
                 break;
         }
     }
+
+    @Override
+    public void onSelected() {
+        super.onSelected();
+        titlebar.setTitle("Discover");
+    }
+
+    @Override
+    public void setTitlebar(Toolbar titlebar) {
+        super.setTitlebar(titlebar);
+    }
 }

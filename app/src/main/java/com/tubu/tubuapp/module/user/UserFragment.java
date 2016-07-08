@@ -46,4 +46,15 @@ public class UserFragment extends BaseTabFragment<Toolbar> implements TabListene
     public void onMenuClick(MenuItem item) {
 
     }
+
+    @Override
+    public void onSelected() {
+        super.onSelected();
+        titlebar.setTitle("User");
+    }
+
+    @Override
+    public void setTitlebar(Toolbar titlebar) {
+        super.setTitlebar(titlebar);
+    }
 }

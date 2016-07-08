@@ -46,4 +46,15 @@ public class SportFragment extends BaseTabFragment<Toolbar> implements TabListen
     public void onMenuClick(MenuItem item) {
 
     }
+
+    @Override
+    public void onSelected() {
+        super.onSelected();
+        titlebar.setTitle("Sport");
+    }
+
+    @Override
+    public void setTitlebar(Toolbar titlebar) {
+        super.setTitlebar(titlebar);
+    }
 }

@@ -15,6 +15,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        mavenCentral()
         maven {
             // CommonAdapter库需要
             url "https://jitpack.io"

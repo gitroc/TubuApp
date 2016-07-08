@@ -13,5 +13,11 @@ public class PublicConstants {
     //应用 share preferences 名称
     public static String SP_NAME = "tubu_share_preferences_name";
 
-    public static String SP_KEY_IS_GUIDE_SHOW = "is_guide_show";
+    //欢迎页是否展示
+    public static String SP_KEY_IS_FIRST_GUIDE = "is_first_guide";
+
+    //应用 文件缓存目录
+    public static String FILE_CACHE_PATH = "Tubu";
+
+    public static long FILE_CACHE_SIZE = 10 * 1024 * 1024;
 }

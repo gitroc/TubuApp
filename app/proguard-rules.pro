@@ -15,3 +15,6 @@
 #-keepclassmembers class fqcn.of.javascript.interface.for.webview {
 #   public *;
 #}
+
+#不混淆 com.github.bumptech.glide:okhttp3-integration:1.4.0@aar
+-keep class com.bumptech.glide.integration.okhttp3.OkHttpGlideModule

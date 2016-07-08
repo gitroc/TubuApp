@@ -24,8 +24,6 @@ import java.util.List;
  */
 public class TabManager {
 
-    private static final int SELECT_COLOR = Color.parseColor("#3bb4f5");
-
     public class TabItem {
 
         public ImageView iv;
@@ -35,12 +33,12 @@ public class TabManager {
 
         public void select() {
             iv.setSelected(true);
-            tv.setTextColor(SELECT_COLOR);
+            tv.setTextColor(context.getResources().getColor(R.color.blue));
         }
 
         public void unSelect() {
             iv.setSelected(false);
-            tv.setTextColor(Color.GRAY);
+            tv.setTextColor(context.getResources().getColor(R.color.gray));
         }
 
     }

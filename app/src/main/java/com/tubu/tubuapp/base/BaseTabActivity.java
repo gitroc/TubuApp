@@ -55,7 +55,7 @@ public abstract class BaseTabActivity <T extends View> extends BaseActivity {
             throw new IllegalArgumentException("tab size must between 3 and 5");
         }
 
-        tabs = (LinearLayout) findViewById(R.id.tabs);
+        tabs = (LinearLayout) findViewById(R.id.mainTabs);
         tabManager = new TabManager(this, tabs);
         for (int i = 0; i < size; ++i) {
             tabManager.addTab(iconResIds[i], titles[i]);
@@ -76,7 +76,7 @@ public abstract class BaseTabActivity <T extends View> extends BaseActivity {
         fragmentManager = getSupportFragmentManager();
 
         adapter = new TabPagerAdapter(fragmentManager);
-        viewPager = (ViewPager) findViewById(R.id.container);
+        viewPager = (ViewPager) findViewById(R.id.mainViewPager);
         viewPager.setOffscreenPageLimit(size - 1);
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {

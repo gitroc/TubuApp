@@ -9,10 +9,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 
+import com.jakewharton.disklrucache.DiskLruCache;
 import com.tubu.tubuapp.R;
 import com.tubu.tubuapp.base.BaseTabFragment;
+import com.tubu.tubuapp.common.utils.DlcCacheUtils;
 import com.tubu.tubuapp.module.main.listener.TabListener;
+
+import java.io.IOException;
+import java.io.OutputStream;
 
 /**
  * @Description: 动态频道
@@ -23,6 +30,8 @@ import com.tubu.tubuapp.module.main.listener.TabListener;
  * @Update: 2016/7/1 15:20
  */
 public class DynamicFragment extends BaseTabFragment<Toolbar> implements TabListener {
+    protected View view;
+//    private WebView webView;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -32,7 +41,9 @@ public class DynamicFragment extends BaseTabFragment<Toolbar> implements TabList
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.dynamic_layout, null);
+        view = inflater.inflate(R.layout.dynamic_layout, null);
+//        initWebView();
+        return view;
     }
 
     @Override
@@ -45,4 +56,16 @@ public class DynamicFragment extends BaseTabFragment<Toolbar> implements TabList
     public void onMenuClick(MenuItem item) {
 
     }
+
+    @Override
+    public void onSelected() {
+        super.onSelected();
+        titlebar.setTitle("Dynamic");
+    }
+
+    @Override
+    public void setTitlebar(Toolbar titlebar) {
+        super.setTitlebar(titlebar);
+    }
+
 }

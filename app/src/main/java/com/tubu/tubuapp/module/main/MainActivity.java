@@ -1,10 +1,14 @@
 package com.tubu.tubuapp.module.main;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.MenuItem;
 
+import com.github.johnpersano.supertoasts.SuperToast;
 import com.tubu.tubuapp.R;
 import com.tubu.tubuapp.base.BaseTabActivity;
 import com.tubu.tubuapp.module.discover.DiscoverFragment;
@@ -19,6 +23,7 @@ import timber.log.Timber;
 public class MainActivity extends BaseTabActivity<Toolbar> {
 
     private static String TAG = "[MainActivity]";
+    private boolean isExit = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,17 +36,71 @@ public class MainActivity extends BaseTabActivity<Toolbar> {
                 R.drawable.tabbar_sport,
                 R.drawable.tabbar_discover,
                 R.drawable.tabbar_user};
-        String[] tabNames = getResources().getStringArray(R.array.main_tab_fragment_names);
+
+        String[] tabNames = getResources().getStringArray(R.array.mainTabFragmentNames);
 
 
         init(tabImages, tabNames);
     }
 
     @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {// 没有其他页面需要退出，就执行两次退出程序操作
+            exit();
+        }
+        return super.onKeyDown(keyCode, event);
+    }
+
+    /**
+     * 退出操作
+     */
+    private void exit() {
+        if (!isExit) {
+            SuperToast superToast = new SuperToast(getApplicationContext());
+            superToast.setAnimations(SuperToast.Animations.FLYIN);
+            superToast.setDuration(SuperToast.Duration.SHORT);
+            superToast.setText(getResources().getString(R.string.exit_app));
+            superToast.setTextSize(SuperToast.TextSize.SMALL);
+            superToast.setBackground(SuperToast.Background.RED);
+            superToast.setIcon(SuperToast.Icon.Dark.INFO, SuperToast.IconPosition.LEFT);
+            superToast.show();
+//            SuperToast.show(getApplicationContext(), getResources().getString(R.string.exit_app));
+            isExit = true;
+            handler.postDelayed(runnable, 2000);// 两秒种重置
+        } else {
+            this.finish();
+        }
+    }
+
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() {
+            Message msg = new Message();
+            msg.what = EXIT_APP;
+            handler.handleMessage(msg);
+        }
+    };
+
+    protected static final int EXIT_APP = 0x001;
+
+    Handler handler = new Handler() {
+        public void handleMessage(Message msg) {
+            int what = msg.what;
+            switch (what) {
+                case EXIT_APP:
+                    isExit = false;
+                    break;
+                default:
+                    break;
+            }
+        }
+    };
+
+    @Override
     protected void initTitleBar() {
-        titlebar = (Toolbar) findViewById(R.id.toolbar);
+        titlebar = (Toolbar) findViewById(R.id.mainToolbar);
         setSupportActionBar(titlebar);
-        getSupportActionBar().setTitle("Home");
+        getSupportActionBar().setTitle("Dynamic");
 
         titlebar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override

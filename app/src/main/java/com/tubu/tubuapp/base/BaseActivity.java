@@ -1,5 +1,8 @@
 package com.tubu.tubuapp.base;
 
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+
 import com.liuguangqiang.swipeback.SwipeBackActivity;
 
 /**
@@ -11,5 +14,8 @@ import com.liuguangqiang.swipeback.SwipeBackActivity;
  * @Update: 2016/7/1 14:08
  */
 public class BaseActivity extends SwipeBackActivity {
-
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 }
