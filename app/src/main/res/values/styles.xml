@@ -42,4 +42,21 @@
         <item name="android:textColor">@color/gray2</item>
     </style>
 
+    <style name="button_white_blue_14sp" parent="button_base">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@drawable/selector_blue_gray</item>
+        <item name="android:background">@drawable/selector_border_blue_gray</item>
+    </style>
+
+    <style name="text_blue_12sp">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/blue</item>
+    </style>
+
+    <style name="textview_gray1_17sp_left">
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
 </resources>
