@@ -1,7 +1,155 @@
-<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+<?xml version="1.0" encoding="utf-8"?><!-- 登录页面 -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+             android:id="@+id/login_framelayout"
+             android:layout_width="match_parent"
+             android:layout_height="match_parent"
+             android:background="@color/white"
+             android:orientation="vertical">
+    <!--<include layout="@layout/back_top_nav_close"/>-->
+    <LinearLayout
+        android:id="@+id/ll_login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="60dp"
+        android:paddingRight="60dp">
 
-</LinearLayout>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="60dp"
+            android:layout_marginTop="120dp"
+            android:background="@drawable/login_logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_icon_user" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="16dp"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+                <!-- android:textCursorDrawable="@null"   android:inputType="phone"
+                    android:maxLength="11"  让光标颜色和text color一样 -->
+
+                <com.tubu.tubuapp.common.widget.ClearEditText
+                    android:id="@+id/loginName"
+                    style="@style/textview_gray1_14sp_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:cursorVisible="true"
+                    android:hint="请输入用户名"
+                    android:paddingBottom="6dp"
+                    android:singleLine="true"
+                    android:maxLength="20"
+                    android:imeOptions="actionNext"
+                    android:text=""
+                    android:textColorHint="@color/gray2"
+                    android:textCursorDrawable="@null"                   />
+
+                <!-- <include layout="@layout/public_transverse_line_layout" /> -->
+
+                <include layout="@layout/public_overall_line_layout" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/login_icon_code" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:orientation="vertical">
+
+                <com.tubu.tubuapp.common.widget.ClearEditText
+                    android:id="@+id/login_password"
+                    style="@style/textview_gray1_14sp_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:hint="请输入密码"
+                    android:inputType="textPassword"
+                    android:paddingBottom="6dp"
+                    android:maxLength="20"
+                    android:singleLine="true"
+                    android:text=""
+                    android:imeOptions="actionDone"
+                    android:textColorHint="@color/gray2"
+                    android:textCursorDrawable="@null" />
+
+                <!-- <include layout="@layout/public_transverse_line_layout" /> -->
+
+                <include layout="@layout/public_overall_line_layout" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/bt_login"
+            style="@style/button_orange_17sp"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:text="登录"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:id="@+id/login_password_reg_txtview"
+                style="@style/textview_gray1_14sp_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:paddingRight="16dp"
+                android:text="注册" />
+
+            <TextView
+                android:id="@+id/reset_password_txtview"
+                style="@style/textview_gray1_14sp_left"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:paddingTop="16dp"
+                android:paddingBottom="16dp"
+                android:paddingLeft="16dp"
+                android:layout_centerVertical="true"
+                android:text="忘记密码?" />
+        </RelativeLayout>
+    </LinearLayout>
+
+    <!--tel_selected  -->
+    <include layout="@layout/service_phone" />
+
+
+</FrameLayout>

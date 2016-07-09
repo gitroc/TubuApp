@@ -13,10 +13,33 @@
         <item name="android:windowBackground">@mipmap/guide</item>
     </style>
 
+    <style name="button_base">
+        <item name="android:gravity">center</item>
+    </style>
+
     <style name="textview_gray1_12sp_center">
         <item name="android:gravity">center</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <style name="button_orange_17sp" parent="button_base">
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:background">@color/orange1</item>
+        <!--<item name="android:background">@drawable/selector_btn_orange</item>-->
+    </style>
+
+    <style name="textview_gray1_14sp_left">
+        <item name="android:gravity">left</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray1</item>
+    </style>
+
+    <style name="textview_gray2_14sp_center">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/gray2</item>
     </style>
 
 </resources>
