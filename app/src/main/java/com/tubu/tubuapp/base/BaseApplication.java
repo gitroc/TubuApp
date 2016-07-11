@@ -11,5 +11,8 @@ import android.app.Application;
  * @Update: 2016/7/1 14:02
  */
 public class BaseApplication extends Application {
-
+    @Override
+    public void onCreate() {
+        super.onCreate();
+    }
 }

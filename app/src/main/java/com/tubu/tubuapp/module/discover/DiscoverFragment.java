@@ -36,6 +36,11 @@ public class DiscoverFragment extends BaseTabFragment<Toolbar> implements TabLis
         inflater.inflate(R.menu.menu_msg3, menu);
     }
 
+    @Override
+    public void initView() {
+
+    }
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

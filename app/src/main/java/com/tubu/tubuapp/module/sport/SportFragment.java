@@ -57,4 +57,9 @@ public class SportFragment extends BaseTabFragment<Toolbar> implements TabListen
     public void setTitlebar(Toolbar titlebar) {
         super.setTitlebar(titlebar);
     }
+
+    @Override
+    public void initView() {
+
+    }
 }

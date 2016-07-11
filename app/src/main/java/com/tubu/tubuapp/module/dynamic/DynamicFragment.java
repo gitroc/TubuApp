@@ -30,8 +30,6 @@ import java.io.OutputStream;
  * @Update: 2016/7/1 15:20
  */
 public class DynamicFragment extends BaseTabFragment<Toolbar> implements TabListener {
-    protected View view;
-//    private WebView webView;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -41,9 +39,7 @@ public class DynamicFragment extends BaseTabFragment<Toolbar> implements TabList
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.dynamic_layout, null);
-//        initWebView();
-        return view;
+        return createView(inflater, R.layout.dynamic_layout, true);
     }
 
     @Override
@@ -60,12 +56,11 @@ public class DynamicFragment extends BaseTabFragment<Toolbar> implements TabList
     @Override
     public void onSelected() {
         super.onSelected();
-        titlebar.setTitle("Dynamic");
+        titlebar.setTitle("动态");
     }
 
     @Override
-    public void setTitlebar(Toolbar titlebar) {
-        super.setTitlebar(titlebar);
-    }
+    public void initView() {
 
+    }
 }

@@ -65,4 +65,9 @@ public class MallFragment extends BaseTabFragment<Toolbar> implements TabListene
     public void setTitlebar(Toolbar titlebar) {
         super.setTitlebar(titlebar);
     }
+
+    @Override
+    public void initView() {
+
+    }
 }

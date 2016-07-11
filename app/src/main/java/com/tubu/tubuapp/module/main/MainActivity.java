@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import com.github.johnpersano.supertoasts.SuperToast;
 import com.tubu.tubuapp.R;
 import com.tubu.tubuapp.base.BaseTabActivity;
+import com.tubu.tubuapp.base.BaseTabFragment;
 import com.tubu.tubuapp.module.discover.DiscoverFragment;
 import com.tubu.tubuapp.module.dynamic.DynamicFragment;
 import com.tubu.tubuapp.module.main.listener.TabListener;
@@ -112,9 +113,9 @@ public class MainActivity extends BaseTabActivity<Toolbar> {
     }
 
     @Override
-    protected Fragment initFragment(int position) {
+    protected BaseTabFragment initFragment(int position) {
         Timber.i(TAG, toString() + "initFragment. position:" + position);
-        Fragment [] fragments = new Fragment[] {new DynamicFragment(),
+        BaseTabFragment [] fragments = new BaseTabFragment[] {new DynamicFragment(),
                 new MallFragment(),
                 new SportFragment(),
                 new DiscoverFragment(),
