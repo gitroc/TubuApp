@@ -25,7 +25,7 @@ public abstract class BaseFragment extends Fragment {
     private static String TAG = "[BaseFragment]";
 
     protected BaseApplication core;
-    private View view;
+    protected View view;
     private ImageView imageView;
 
     public View createView(LayoutInflater inflater, int layoutId, boolean showLoading) {

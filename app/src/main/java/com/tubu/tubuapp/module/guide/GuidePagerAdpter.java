@@ -71,6 +71,7 @@ public class GuidePagerAdpter extends PagerAdapter {
 
                     Intent intent = new Intent(activity, MainActivity.class);
                     activity.startActivity(intent);
+                    activity.finish();
                 }
             });
         }

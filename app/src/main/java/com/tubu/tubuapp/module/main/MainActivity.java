@@ -62,12 +62,12 @@ public class MainActivity extends BaseTabActivity<Toolbar> {
             superToast.setDuration(SuperToast.Duration.SHORT);
             superToast.setText(getResources().getString(R.string.exit_app));
             superToast.setTextSize(SuperToast.TextSize.SMALL);
-            superToast.setBackground(SuperToast.Background.RED);
+            superToast.setBackground(SuperToast.Background.GRAY);
             superToast.setIcon(SuperToast.Icon.Dark.INFO, SuperToast.IconPosition.LEFT);
             superToast.show();
 //            SuperToast.show(getApplicationContext(), getResources().getString(R.string.exit_app));
             isExit = true;
-            handler.postDelayed(runnable, 2000);// 两秒种重置
+            handler.postDelayed(runnable, 1000);// 两秒种重置
         } else {
             this.finish();
         }

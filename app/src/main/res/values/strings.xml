@@ -10,6 +10,38 @@
         <item>我的</item>
     </string-array>
 
+    <string-array name="dynamicFragmentNames">
+        <item>精选</item>
+        <item>我的关注</item>
+    </string-array>
+
+    <string-array name="mallFragmentNames">
+        <item>所有</item>
+        <item>我的定制</item>
+    </string-array>
+    
+    <string-array name="mallProductFragmentNames">
+        <item>商品</item>
+        <item>详情</item>
+        <item>评价</item>
+    </string-array>
+    
+    <string-array name="discoverDiscussFragmentNames">
+        <item>讨论区</item>
+        <item>我发起的</item>
+    </string-array>
+    
+    <string-array name="discoverMessageFragmentNames">
+        <item>系统消息</item>
+        <item>留言</item>
+    </string-array>
+
+    <string-array name="discoverListFragmentNames">
+        <item>日</item>
+        <item>月</item>
+        <item>总</item>
+    </string-array>
+
     <string name="exit_app">再按一次退出程序</string>
     <string name="service_phone">客服电话： 4008-020-666</string>
 </resources>

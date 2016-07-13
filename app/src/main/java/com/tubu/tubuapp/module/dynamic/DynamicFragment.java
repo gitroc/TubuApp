@@ -9,17 +9,11 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
 
-import com.jakewharton.disklrucache.DiskLruCache;
 import com.tubu.tubuapp.R;
 import com.tubu.tubuapp.base.BaseTabFragment;
-import com.tubu.tubuapp.common.utils.DlcCacheUtils;
+import com.tubu.tubuapp.module.dynamic.controller.DynamicController;
 import com.tubu.tubuapp.module.main.listener.TabListener;
-
-import java.io.IOException;
-import java.io.OutputStream;
 
 /**
  * @Description: 动态频道
@@ -61,6 +55,6 @@ public class DynamicFragment extends BaseTabFragment<Toolbar> implements TabList
 
     @Override
     public void initView() {
-
+        new DynamicController(this, view);
     }
 }

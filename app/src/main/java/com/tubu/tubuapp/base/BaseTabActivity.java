@@ -86,7 +86,7 @@ public abstract class BaseTabActivity <T extends View> extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
-                Timber.w("main", "onPageSelected1===,position:" + position);
+                Timber.i("main", "onPageSelected1===,position:" + position);
                 tabManager.select(position);
                 Fragment f = getFragment(position);
                 ((BaseTabFragment) f).onSelected();
@@ -108,13 +108,13 @@ public abstract class BaseTabActivity <T extends View> extends BaseActivity {
 
         @Override
         public Fragment getItem(int position) {
-            Timber.w("main", "getItem===" + position);
+            Timber.i("main", "getItem===" + position);
             return initFragment(position);
         }
 
         @Override
         public Fragment instantiateItem(ViewGroup container, int position) {
-            Timber.w("main", "instantiateItem===,position:" + position);
+            Timber.i("main", "instantiateItem===,position:" + position);
             Fragment obj = (Fragment) super.instantiateItem(container, position);
             ((BaseTabFragment) obj).setTitlebar(titlebar);
             return obj;
