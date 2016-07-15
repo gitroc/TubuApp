@@ -5,18 +5,7 @@
                 android:background="@color/white"
                 android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/dynamicTabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:orientation="horizontal"/>
-
-    <android.support.v4.view.ViewPager
-        android:id="@+id/dynamicViewPager"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/dynamicTabs"/>
+    <include layout="@layout/base_fragment_top"/>
 
     <include layout="@layout/loading_page"/>
 

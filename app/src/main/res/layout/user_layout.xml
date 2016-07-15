@@ -12,11 +12,11 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <include layout="@layout/account_layout_user" />
+            <include layout="@layout/user_layout_login" />
 
             <include layout="@layout/public_overall_boldline_layout" />
 
-            <include layout="@layout/account_layout_main" />
+            <include layout="@layout/user_layout_information" />
         </LinearLayout>
 
     </ScrollView>
