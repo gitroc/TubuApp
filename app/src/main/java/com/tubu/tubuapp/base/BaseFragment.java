@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
 import com.tubu.tubuapp.R;
 
 import timber.log.Timber;
@@ -26,7 +27,7 @@ public abstract class BaseFragment extends Fragment {
 
     protected BaseApplication core;
     protected View view;
-    private ImageView imageView;
+    private ImageView ivLoading;
 
     public View createView(LayoutInflater inflater, int layoutId, boolean showLoading) {
         return createView(inflater, layoutId, showLoading, false);
@@ -43,7 +44,7 @@ public abstract class BaseFragment extends Fragment {
         if (view == null || recreate) {
             view = inflater.inflate(layoutId, null);
             if (showLoading) {
-                imageView = (ImageView) view.findViewById(R.id.ivLoading);
+                ivLoading = (ImageView) view.findViewById(R.id.ivLoading);
                 Timber.i(TAG, "show loading page");
                 startLoading();
             }
@@ -57,8 +58,9 @@ public abstract class BaseFragment extends Fragment {
      * 显示加载页
      */
     public void startLoading() {
-        if (imageView != null) {
-            imageView.setVisibility(View.VISIBLE);
+        if (ivLoading != null) {
+            ivLoading.setVisibility(View.VISIBLE);
+            Glide.with(this).load(R.drawable.loading).into(ivLoading);
         }
     }
 
@@ -66,8 +68,8 @@ public abstract class BaseFragment extends Fragment {
      * 隐藏加载页面
      */
     public void stopLoading() {
-        if (imageView != null) {
-            imageView.setVisibility(View.GONE);
+        if (ivLoading != null) {
+            ivLoading.setVisibility(View.GONE);
         }
     }
 

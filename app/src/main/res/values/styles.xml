@@ -9,7 +9,7 @@
         <item name="android:windowIsTranslucent">true</item>
     </style>
 
-    <style name="wel" parent="AppTheme">
+    <style name="guide" parent="AppTheme">
         <item name="android:windowBackground">@mipmap/guide</item>
     </style>
 
