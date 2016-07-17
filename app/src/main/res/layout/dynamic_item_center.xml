@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="280dp">
+
+    <ImageView
+        android:id="@+id/ivDynamicItemCenter"
+        android:layout_width="match_parent"
+        android:layout_height="215dp"
+        android:src="@drawable/dynamic_item_center"/>
+
+    <TextView
+        android:id="@+id/tvDynamicItemCenter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ivDynamicItemCenter"
+        android:text="后来明白，我们永远无法成为别人满意的那个自己，可如果坚持做喜欢的自己，终会遇见喜欢你的人。其实到最后，我们都是在寻找同类，就像……"/>
+
+</RelativeLayout>
