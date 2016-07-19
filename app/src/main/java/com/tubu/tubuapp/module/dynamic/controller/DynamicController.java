@@ -27,7 +27,7 @@ import kale.adapter.CommonRcvAdapter;
 import kale.adapter.item.AdapterItem;
 
 /**
- * @Description: TODO describe this class
+ * @Description: 动态Fragment控制
  * @Copyright: Copyright (c) 2016 chexiang.com. All right reserved.
  * @Author: songjunpeng
  * @Date: 2016/7/12 10:35
@@ -66,6 +66,7 @@ public class DynamicController {
     protected void init(String[] titles) {
         new BaseFragmentTop(baseFragment, view, titles);
         initViewPager();
+        loadData();
     }
 
     private void initViewPager() {
@@ -133,5 +134,9 @@ public class DynamicController {
                 }, 1000);
             }
         });
+    }
+
+    private void loadData() {
+
     }
 }

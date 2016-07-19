@@ -10,7 +10,7 @@ import android.widget.ImageView;
 
 
 import com.tubu.tubuapp.R;
-import com.tubu.tubuapp.common.utils.SpUtils;
+import com.tubu.tubuapp.common.utils.sp.SpUtils;
 import com.tubu.tubuapp.constants.PublicConstants;
 import com.tubu.tubuapp.module.main.MainActivity;
 
