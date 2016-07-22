@@ -111,6 +111,8 @@ public class DynamicController {
                         recyclerAdapterWithHF.notifyDataSetChanged();
                         ptrClassicFrameLayout.refreshComplete();
                         ptrClassicFrameLayout.setLoadMoreEnable(true);
+
+                        baseFragment.stopLoading();
                     }
                 }, 2000);
             }

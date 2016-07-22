@@ -30,11 +30,7 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
 
-    //swipeback tab bar 左右滑动
-    compile 'com.github.liuguangqiang.swipeback:library:1.0.2@aar'
-
     // net work
-    compile 'com.squareup.okio:okio:1.6.0'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
 
     //fastjson gson

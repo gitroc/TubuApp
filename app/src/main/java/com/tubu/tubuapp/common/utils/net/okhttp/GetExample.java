@@ -22,7 +22,13 @@ public class GetExample {
                 .url(url)
                 .build();
 
-        Response response = client.newCall(request).execute();
+        Response response;
+
+        try {
+            response = client.newCall(request).execute();
+        } catch (Exception e) {
+            throw e;
+        }
 
         return response.body().string();
     }

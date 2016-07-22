@@ -1,5 +1,7 @@
 package com.tubu.tubuapp.common.utils.net.okhttp;
 
+import com.tubu.tubuapp.common.utils.net.JsonNetRequest;
+
 import java.io.IOException;
 
 import okhttp3.MediaType;
@@ -17,8 +19,7 @@ import okhttp3.Response;
  * @Update: 2016/7/19 17:29
  */
 public class PostExample {
-    public static final MediaType JSON
-            = MediaType.parse("application/json; charset=utf-8");
+    public static final MediaType JSON = MediaType.parse("application/json; charset=utf-8");
 
     OkHttpClient client = new OkHttpClient();
 
@@ -29,7 +30,13 @@ public class PostExample {
                 .post(body)
                 .build();
 
-        Response response = client.newCall(request).execute();
+        Response response;
+
+        try {
+            response  = client.newCall(request).execute();
+        } catch (Exception e) {
+            throw e;
+        }
 
         return response.body().string();
     }
@@ -47,9 +54,15 @@ public class PostExample {
     }
 
     public static void main(String[] args) throws IOException {
-        PostExample example = new PostExample();
-        String json = example.bowlingJson("Jesse", "Jake");
-        String response = example.post("http://www.roundsapp.com/post", json);
-        System.out.println(response);
+//        PostExample example = new PostExample();
+//        String json = example.bowlingJson("Jesse", "Jake");
+//        String response = example.post("http://www.roundsapp.com/post", json);
+//        System.out.println(response);
+
+        testJsonRequest();
+    }
+
+    static void testJsonRequest() {
+//        JsonNetRequest.jsonPost();
     }
 }

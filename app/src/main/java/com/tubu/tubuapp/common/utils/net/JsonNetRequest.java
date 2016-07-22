@@ -1,6 +1,17 @@
 package com.tubu.tubuapp.common.utils.net;
 
+import android.app.Activity;
 import android.content.Context;
+
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 /**
  * @Description: Json格式网络请求
@@ -11,8 +22,55 @@ import android.content.Context;
  * @Update: 2016/7/19 10:10
  */
 public class JsonNetRequest {
+    private static OkHttpClient okHttpClient = new OkHttpClient();
 
-    public static void jsonPost(final Context context, String url, String jsonString, final JsonNetResponse response) {
+    static {
+        OkHttpClient.Builder builder = new OkHttpClient().newBuilder();
+        builder.connectTimeout(JsonConstants.CONNECT_TIMEOUT, TimeUnit.MILLISECONDS);
+        builder.readTimeout(JsonConstants.READ_TIMEOUT, TimeUnit.MILLISECONDS);
+        builder.writeTimeout(JsonConstants.WRITE_TIMEOUT, TimeUnit.MILLISECONDS);
+        okHttpClient = builder.build();
+    }
 
+    /**
+     * json Post 请求
+     * @param context
+     * @param url
+     * @param jsonString
+     * @param jsonNetResponse
+     */
+    public static void jsonPost(final Context context, String url, String jsonString, final JsonNetResponse jsonNetResponse) {
+        assert (context == null);
+        assert (url == null);
+        assert (jsonString == null);
+        assert (jsonNetResponse == null);
+
+        jsonNetResponse.context = context;
+
+        try {
+            jsonExecute(JsonConstants.METHOD.POST, url, jsonString, new Callback() {
+                @Override
+                public void onFailure(Call call, IOException e) {
+                    jsonNetResponse.onFailure(call, e);
+                }
+
+                @Override
+                public void onResponse(Call call, Response response) throws IOException {
+                    if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+                    jsonNetResponse.onResponse(call, response);
+                }
+            });
+        } catch (Exception e) {
+            jsonNetResponse.onFailure(e);
+        }
+    }
+
+    private static void jsonExecute(JsonConstants.METHOD method, String url, String body, Callback callback) {
+        Request request = new Request.Builder()
+                .url(url)
+                .method(method.toString(), RequestBody.create(JsonConstants.JSON, body))
+                .build();
+
+        okHttpClient.newCall(request).enqueue(callback);
     }
 }

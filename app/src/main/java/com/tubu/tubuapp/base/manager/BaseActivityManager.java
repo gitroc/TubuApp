@@ -1,4 +1,4 @@
-package com.tubu.tubuapp.base;
+package com.tubu.tubuapp.base.manager;
 
 import android.app.Activity;
 

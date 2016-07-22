@@ -1,5 +1,6 @@
 package com.tubu.tubuapp.common.utils.net;
 
+import android.app.Activity;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -9,9 +10,12 @@ import com.tubu.tubuapp.common.utils.toast.ToastUtils;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
+import okhttp3.Call;
+import okhttp3.Response;
 import timber.log.Timber;
 
 /**
@@ -26,14 +30,21 @@ public abstract class JsonNetResponse {
     private String TAG = "[JsonNetResponse]";
     public Context context;
 
-    public abstract void onSuccess(int statusCode, JSONObject response);
+    public abstract void onResponse(Call call, Response response);
 
-    public void onFailure(Throwable error, String content) {
-        Timber.e(TAG, content);
-        exceptionHandler(context, error);
+    public void onFailure(Call call, IOException e) {
+        exceptionHandler(context, e);
     }
 
-    private void exceptionHandler(Context context, Throwable error) {
+    public void onFailure(Exception e) {
+        exceptionHandler(context, e);
+    }
+    /**
+     * Json Post请求异常处理
+     * @param context
+     * @param error
+     */
+    private void exceptionHandler(Context context, Exception error) {
         if (error instanceof JSONException) {
             // json异常
             ToastUtils.show(context, context.getString(R.string.hit_prase_json_failure));
@@ -50,6 +61,4 @@ public abstract class JsonNetResponse {
             // 加载失败
         }
     }
-
-
 }
