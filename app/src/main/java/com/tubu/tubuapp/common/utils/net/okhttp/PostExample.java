@@ -63,6 +63,6 @@ public class PostExample {
     }
 
     static void testJsonRequest() {
-//        JsonNetRequest.jsonPost();
+
     }
 }

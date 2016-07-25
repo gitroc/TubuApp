@@ -34,35 +34,36 @@ public class JsonNetRequest {
 
     /**
      * json Post 请求
-     * @param context
      * @param url
      * @param jsonString
      * @param jsonNetResponse
      */
-    public static void jsonPost(final Context context, String url, String jsonString, final JsonNetResponse jsonNetResponse) {
-        assert (context == null);
+    public static void jsonPost(final String url, final String jsonString, final JsonNetResponse jsonNetResponse) {
         assert (url == null);
         assert (jsonString == null);
         assert (jsonNetResponse == null);
 
-        jsonNetResponse.context = context;
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    jsonExecute(JsonConstants.METHOD.POST, url, jsonString, new Callback() {
+                        @Override
+                        public void onFailure(Call call, IOException e) {
+                            jsonNetResponse.onFailure(e);
+                        }
 
-        try {
-            jsonExecute(JsonConstants.METHOD.POST, url, jsonString, new Callback() {
-                @Override
-                public void onFailure(Call call, IOException e) {
-                    jsonNetResponse.onFailure(call, e);
+                        @Override
+                        public void onResponse(Call call, Response response) throws IOException {
+                            if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
+                            jsonNetResponse.onResponse(call, response);
+                        }
+                    });
+                } catch (Exception e) {
+                    jsonNetResponse.onFailure(e);
                 }
-
-                @Override
-                public void onResponse(Call call, Response response) throws IOException {
-                    if (!response.isSuccessful()) throw new IOException("Unexpected code " + response);
-                    jsonNetResponse.onResponse(call, response);
-                }
-            });
-        } catch (Exception e) {
-            jsonNetResponse.onFailure(e);
-        }
+            }
+        }).start();
     }
 
     private static void jsonExecute(JsonConstants.METHOD method, String url, String body, Callback callback) {

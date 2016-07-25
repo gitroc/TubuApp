@@ -18,3 +18,9 @@
 
 #不混淆 com.github.bumptech.glide:okhttp3-integration:1.4.0@aar
 -keep class com.bumptech.glide.integration.okhttp3.OkHttpGlideModule
+
+
+-keepclassmembers class * extends de.greenrobot.dao.AbstractDao {
+public static java.lang.String TABLENAME;
+}
+-keep class **$Properties

@@ -16,15 +16,19 @@ import com.chanven.lib.cptr.recyclerview.RecyclerAdapterWithHF;
 import com.tubu.tubuapp.R;
 import com.tubu.tubuapp.base.BaseFragment;
 import com.tubu.tubuapp.base.BaseFragmentTop;
+import com.tubu.tubuapp.common.utils.dao.DaoUtils;
+import com.tubu.tubuapp.common.utils.dao.manager.DBManager;
 import com.tubu.tubuapp.module.dynamic.DynamicFragment;
 import com.tubu.tubuapp.module.dynamic.entity.DynamicEntity;
 import com.tubu.tubuapp.module.dynamic.item.DynamicItem;
+import com.tubu.tubuapp.module.user.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import kale.adapter.CommonRcvAdapter;
 import kale.adapter.item.AdapterItem;
+import timber.log.Timber;
 
 /**
  * @Description: 动态Fragment控制
@@ -64,9 +68,21 @@ public class DynamicController {
     }
 
     protected void init(String[] titles) {
-        new BaseFragmentTop(baseFragment, view, titles);
+        initBaseFragmentTop(titles);
+
         initViewPager();
         loadData();
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                DaoUtils.testGreenDao(context);
+            }
+        }).start();
+    }
+
+    private void initBaseFragmentTop(String[] titles) {
+        new BaseFragmentTop(baseFragment, view, titles);
     }
 
     private void initViewPager() {
@@ -130,8 +146,7 @@ public class DynamicController {
                         recyclerAdapterWithHF.notifyDataSetChanged();
                         ptrClassicFrameLayout.loadMoreComplete(true);
                         page++;
-                        Toast.makeText(context, "load more complete", Toast.LENGTH_SHORT)
-                                .show();
+                        Toast.makeText(context, "load more complete", Toast.LENGTH_SHORT).show();
                     }
                 }, 1000);
             }

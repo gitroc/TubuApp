@@ -28,37 +28,33 @@ import timber.log.Timber;
  */
 public abstract class JsonNetResponse {
     private String TAG = "[JsonNetResponse]";
-    public Context context;
 
     public abstract void onResponse(Call call, Response response);
 
-    public void onFailure(Call call, IOException e) {
-        exceptionHandler(context, e);
+    public void onFailure(Exception e) {
+        exceptionHandler(e);
     }
 
-    public void onFailure(Exception e) {
-        exceptionHandler(context, e);
-    }
     /**
      * Json Post请求异常处理
-     * @param context
      * @param error
      */
-    private void exceptionHandler(Context context, Exception error) {
+    private void exceptionHandler(Exception error) {
         if (error instanceof JSONException) {
             // json异常
-            ToastUtils.show(context, context.getString(R.string.hit_prase_json_failure));
+            Timber.i(TAG, "json异常");
         } else if (error instanceof NullPointerException) {
             // 获取数据失败数据为空
-            ToastUtils.show(context, context.getString(R.string.hit_no_data));
+            Timber.i(TAG, "获取数据失败数据为空");
         } else if (error instanceof UnknownHostException) {
             // 网络异常
-            ToastUtils.show(context, context.getString(R.string.hit_network_failure));
+            Timber.i(TAG, "网络异常");
         } else if (error instanceof SocketException) {
             // 网络异常
-            ToastUtils.show(context, context.getString(R.string.hit_network_failure));
+            Timber.i(TAG, "网络异常");
         } else {
             // 加载失败
+            Timber.i(TAG, "加载失败");
         }
     }
 }
