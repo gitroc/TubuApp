@@ -15,33 +15,24 @@
         <item>我的关注</item>
     </string-array>
 
-    <string-array name="mallFragmentNames">
-        <item>所有</item>
-        <item>我的定制</item>
-    </string-array>
-    
-    <string-array name="mallProductFragmentNames">
-        <item>商品</item>
-        <item>详情</item>
-        <item>评价</item>
-    </string-array>
-    
-    <string-array name="discoverDiscussFragmentNames">
-        <item>讨论区</item>
-        <item>我发起的</item>
-    </string-array>
-    
-    <string-array name="discoverMessageFragmentNames">
-        <item>系统消息</item>
-        <item>留言</item>
-    </string-array>
-
-    <string-array name="discoverListFragmentNames">
-        <item>日</item>
-        <item>月</item>
-        <item>总</item>
-    </string-array>
-
+    <string name="loading">加载中...</string>
     <string name="exit_app">再按一次退出程序</string>
-    <string name="service_phone">客服电话： 4008-020-666</string>
+
+
+    <!--下拉刷新-->
+    <string name="ptr_header_pull_down">下拉</string>
+    <string name="ptr_header_pull_down_to_refresh">下拉刷新</string>
+    <string name="ptr_header_release_to_refresh">松开刷新</string>
+    <string name="ptr_header_refreshing">刷新中</string>
+    <string name="ptr_header_refresh_complete">更新完成</string>
+
+    <string name="cube_ptr_last_update">上次更新:&#160;</string>
+    <string name="cube_ptr_seconds_ago">&#160;秒之前</string>
+    <string name="cube_ptr_minutes_ago">&#160;分钟之前</string>
+    <string name="cube_ptr_hours_ago">&#160;小时之前</string>
+
+    <string name="ptr_footer_normal">松开载入更多</string>
+    <string name="ptr_footer_loading">加载中</string>
+    <string name="ptr_footer_nomore">没有更多</string>
+    <string name="ptr_footer_fail">加载失败,点击重新</string>
 </resources>

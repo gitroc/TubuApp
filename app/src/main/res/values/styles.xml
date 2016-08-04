@@ -48,11 +48,6 @@
         <item name="android:background">@drawable/selector_border_blue_gray</item>
     </style>
 
-    <style name="text_blue_12sp">
-        <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/blue</item>
-    </style>
-
     <style name="textview_gray1_17sp_left">
         <item name="android:gravity">left</item>
         <item name="android:textSize">17sp</item>

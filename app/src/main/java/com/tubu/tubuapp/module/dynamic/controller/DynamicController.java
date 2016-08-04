@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Toast;
 
-import com.chanven.lib.cptr.PtrClassicFrameLayout;
 import com.chanven.lib.cptr.PtrDefaultHandler;
 import com.chanven.lib.cptr.PtrFrameLayout;
 import com.chanven.lib.cptr.loadmore.OnLoadMoreListener;
@@ -16,19 +15,16 @@ import com.chanven.lib.cptr.recyclerview.RecyclerAdapterWithHF;
 import com.tubu.tubuapp.R;
 import com.tubu.tubuapp.base.BaseFragment;
 import com.tubu.tubuapp.base.BaseFragmentTop;
-import com.tubu.tubuapp.common.utils.dao.DaoUtils;
-import com.tubu.tubuapp.common.utils.dao.manager.DBManager;
+import com.tubu.tubuapp.common.utils.ptr.PtrLayout;
 import com.tubu.tubuapp.module.dynamic.DynamicFragment;
 import com.tubu.tubuapp.module.dynamic.entity.DynamicEntity;
 import com.tubu.tubuapp.module.dynamic.item.DynamicItem;
-import com.tubu.tubuapp.module.user.entity.User;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import kale.adapter.CommonRcvAdapter;
 import kale.adapter.item.AdapterItem;
-import timber.log.Timber;
 
 /**
  * @Description: 动态Fragment控制
@@ -44,7 +40,7 @@ public class DynamicController {
     private FragmentActivity context;
     private View view;
 
-    private PtrClassicFrameLayout ptrClassicFrameLayout;
+    private PtrLayout ptrClassicFrameLayout;
     private RecyclerView recyclerView;
     private List<DynamicEntity> dynamicEntityList = new ArrayList<>();
     private RecyclerAdapterWithHF recyclerAdapterWithHF;
@@ -73,12 +69,12 @@ public class DynamicController {
         initViewPager();
         loadData();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                DaoUtils.testGreenDao(context);
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                DaoUtils.testGreenDao(context);
+//            }
+//        }).start();
     }
 
     private void initBaseFragmentTop(String[] titles) {
@@ -86,7 +82,7 @@ public class DynamicController {
     }
 
     private void initViewPager() {
-        ptrClassicFrameLayout = (PtrClassicFrameLayout) view.findViewById(R.id.layDynamicRecyclerViewFrame);
+        ptrClassicFrameLayout = (PtrLayout) view.findViewById(R.id.layDynamicRecyclerViewFrame);
         recyclerView = (RecyclerView) view.findViewById(R.id.recyclerViewDynamicList);
 
         rcvAdapter = new CommonRcvAdapter<DynamicEntity>(dynamicEntityList) {
