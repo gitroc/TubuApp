@@ -142,7 +142,7 @@ public class DynamicController {
                         recyclerAdapterWithHF.notifyDataSetChanged();
                         ptrClassicFrameLayout.loadMoreComplete(true);
                         page++;
-                        Toast.makeText(context, "load more complete", Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "load more complete", Toast.LENGTH_SHORT).show();
                     }
                 }, 1000);
             }

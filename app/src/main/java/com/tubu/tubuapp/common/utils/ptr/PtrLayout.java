@@ -8,7 +8,6 @@ import android.widget.AbsListView;
 import android.widget.GridView;
 
 import com.chanven.lib.cptr.PtrFrameLayout;
-import com.chanven.lib.cptr.loadmore.DefaultLoadMoreFooter;
 import com.chanven.lib.cptr.loadmore.GridViewHandler;
 import com.chanven.lib.cptr.loadmore.ILoadViewMoreFactory;
 import com.chanven.lib.cptr.loadmore.ListViewHandler;

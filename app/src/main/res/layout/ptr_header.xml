@@ -53,14 +53,14 @@
             android:layout_toLeftOf="@+id/layHeaderText">
 
             <ImageView
-                android:id="@+id/ivHeaderPullDown"
+                android:id="@+id/ivHeaderPull"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"
                 android:src="@drawable/common_icon_pulldown" />
 
-            <ProgressBar
-                android:id="@+id/pbHeader"
+            <ImageView
+                android:id="@+id/ivHeaderRefresh"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_gravity="center"

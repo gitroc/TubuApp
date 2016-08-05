@@ -10,9 +10,10 @@ import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.view.animation.RotateAnimation;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-
+import com.bumptech.glide.Glide;
 import com.chanven.lib.cptr.PtrFrameLayout;
 import com.chanven.lib.cptr.PtrUIHandler;
 import com.chanven.lib.cptr.indicator.PtrIndicator;
@@ -32,12 +33,14 @@ public class PtrHeader extends FrameLayout implements PtrUIHandler {
     private RotateAnimation mFlipAnimation;
     private RotateAnimation mReverseFlipAnimation;
     private TextView mTitleTextView;
-    private View mRotateView;
-    private View mProgressBar;
+    private ImageView ivHeaderPull;
+    private ImageView ivHeaderRefresh;
     private long mLastUpdateTime = -1;
     private TextView mLastUpdateTextView;
     private String mLastUpdateTimeKey;
     private boolean mShouldShowLastUpdate;
+
+    private View header;
 
     private LastUpdateTimeUpdater mLastUpdateTimeUpdater = new LastUpdateTimeUpdater();
 
@@ -62,13 +65,13 @@ public class PtrHeader extends FrameLayout implements PtrUIHandler {
             mRotateAniTime = arr.getInt(R.styleable.PtrHeader_ptr_rotate_time, mRotateAniTime);
         }
         buildAnimation();
-        View header = LayoutInflater.from(getContext()).inflate(R.layout.ptr_header, this);
+        header = LayoutInflater.from(getContext()).inflate(R.layout.ptr_header, this);
 
-        mRotateView = header.findViewById(R.id.ivHeaderPullDown);
+        ivHeaderPull = (ImageView) header.findViewById(R.id.ivHeaderPull);
 
         mTitleTextView = (TextView) header.findViewById(R.id.tvHeaderTextTitle);
         mLastUpdateTextView = (TextView) header.findViewById(R.id.tvHeaderTextUpdate);
-        mProgressBar = header.findViewById(R.id.pbHeader);
+        ivHeaderRefresh = (ImageView) header.findViewById(R.id.ivHeaderRefresh);
 
         resetView();
     }
@@ -116,12 +119,12 @@ public class PtrHeader extends FrameLayout implements PtrUIHandler {
 
     private void resetView() {
         hideRotateView();
-        mProgressBar.setVisibility(INVISIBLE);
+        ivHeaderRefresh.setVisibility(INVISIBLE);
     }
 
     private void hideRotateView() {
-        mRotateView.clearAnimation();
-        mRotateView.setVisibility(INVISIBLE);
+        ivHeaderPull.clearAnimation();
+        ivHeaderPull.setVisibility(INVISIBLE);
     }
 
     @Override
@@ -137,9 +140,9 @@ public class PtrHeader extends FrameLayout implements PtrUIHandler {
         tryUpdateLastUpdateTime();
         mLastUpdateTimeUpdater.start();
 
-        mProgressBar.setVisibility(INVISIBLE);
+        ivHeaderRefresh.setVisibility(INVISIBLE);
 
-        mRotateView.setVisibility(VISIBLE);
+        ivHeaderPull.setVisibility(VISIBLE);
         mTitleTextView.setVisibility(VISIBLE);
         if (frame.isPullToRefresh()) {
             mTitleTextView.setText(getResources().getString(R.string.ptr_header_pull_down_to_refresh));
@@ -152,7 +155,11 @@ public class PtrHeader extends FrameLayout implements PtrUIHandler {
     public void onUIRefreshBegin(PtrFrameLayout frame) {
         mShouldShowLastUpdate = false;
         hideRotateView();
-        mProgressBar.setVisibility(VISIBLE);
+        ivHeaderRefresh.setVisibility(VISIBLE);
+        Glide.with(header.getContext())
+                .load(R.drawable.common_icon_refresh)
+                .asGif()
+                .into(ivHeaderRefresh);
         mTitleTextView.setVisibility(VISIBLE);
         mTitleTextView.setText(R.string.ptr_header_refreshing);
 
@@ -163,7 +170,7 @@ public class PtrHeader extends FrameLayout implements PtrUIHandler {
     @Override
     public void onUIRefreshComplete(PtrFrameLayout frame) {
         hideRotateView();
-        mProgressBar.setVisibility(INVISIBLE);
+        ivHeaderRefresh.setVisibility(INVISIBLE);
 
         mTitleTextView.setVisibility(VISIBLE);
         mTitleTextView.setText(getResources().getString(R.string.ptr_header_refresh_complete));
@@ -185,17 +192,17 @@ public class PtrHeader extends FrameLayout implements PtrUIHandler {
         if (currentPos < mOffsetToRefresh && lastPos >= mOffsetToRefresh) {
             if (isUnderTouch && status == PtrFrameLayout.PTR_STATUS_PREPARE) {
                 crossRotateLineFromBottomUnderTouch(frame);
-                if (mRotateView != null) {
-                    mRotateView.clearAnimation();
-                    mRotateView.startAnimation(mReverseFlipAnimation);
+                if (ivHeaderPull != null) {
+                    ivHeaderPull.clearAnimation();
+                    ivHeaderPull.startAnimation(mReverseFlipAnimation);
                 }
             }
         } else if (currentPos > mOffsetToRefresh && lastPos <= mOffsetToRefresh) {
             if (isUnderTouch && status == PtrFrameLayout.PTR_STATUS_PREPARE) {
                 crossRotateLineFromTopUnderTouch(frame);
-                if (mRotateView != null) {
-                    mRotateView.clearAnimation();
-                    mRotateView.startAnimation(mFlipAnimation);
+                if (ivHeaderPull != null) {
+                    ivHeaderPull.clearAnimation();
+                    ivHeaderPull.startAnimation(mFlipAnimation);
                 }
             }
         }

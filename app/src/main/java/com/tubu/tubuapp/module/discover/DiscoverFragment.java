@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.tubu.tubuapp.R;
 import com.tubu.tubuapp.base.BaseTabFragment;
+import com.tubu.tubuapp.common.utils.toast.ToastUtils;
 import com.tubu.tubuapp.module.main.listener.TabListener;
 
 /**
@@ -52,7 +53,7 @@ public class DiscoverFragment extends BaseTabFragment<Toolbar> implements TabLis
     public void onMenuClick(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.msg:
-                Toast.makeText(getActivity(), "discover的msg", Toast.LENGTH_SHORT).show();
+                ToastUtils.show(getActivity(), "discover的msg");
                 break;
         }
     }
