@@ -20,7 +20,7 @@ public class BaseApplication extends Application {
         super.onCreate();
 
         if (BuildConfig.DEBUG) {
-            Logger.init("[Roc]")                // default PRETTYLOGGER or use just init()
+            Logger.init("[ROC]")                // default PRETTYLOGGER or use just init()
                     .methodCount(5)                 // default 2 方法栈打印的个数，默认是2
 //                    .hideThreadInfo()               // default shown  隐藏线程信息
                     .logLevel(LogLevel.FULL)        // default LogLevel.FULL 显示全部日志，LogLevel.NONE不显示日志，默认是Full
@@ -28,7 +28,7 @@ public class BaseApplication extends Application {
                                                     // 自定义一个打印适配器，这里适配了Android的Log打印，你也可以自己实现LogAdapter接口来做一些特殊需求的日志打印适配
 
         } else {
-            Logger.init("[Roc]")
+            Logger.init("[ROC]")
                     .methodCount(2)
                     .hideThreadInfo()
                     .logLevel(LogLevel.NONE)

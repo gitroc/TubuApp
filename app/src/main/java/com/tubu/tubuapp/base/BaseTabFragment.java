@@ -28,7 +28,7 @@ public class BaseTabFragment<T extends View> extends BaseFragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        titlebar.setBackgroundColor(getResources().getColor(R.color.blue));
+        titlebar.setBackgroundResource(R.color.blue);
     }
 
     @CallSuper

@@ -17,7 +17,9 @@ import com.tubu.tubuapp.base.BaseTabFragment;
 import com.tubu.tubuapp.common.utils.toast.ToastUtils;
 import com.tubu.tubuapp.module.main.listener.TabListener;
 
+import rx.Observable;
 import rx.Observer;
+import rx.Subscriber;
 
 /**
  * @Description: 发现频道
@@ -59,6 +61,20 @@ public class DiscoverFragment extends BaseTabFragment<Toolbar> implements TabLis
                 Logger.t(TAG).i("Item: " + s);
             }
         };
+
+        Observable observable = Observable.create(new Observable.OnSubscribe<String>() {
+            @Override
+            public void call(Subscriber<? super String> subscriber) {
+                subscriber.onNext("Hello");
+                subscriber.onNext("Hi");
+                subscriber.onNext("Aloha");
+                subscriber.onCompleted();
+            }
+        });
+
+        Observable.just("Hello", "Hi", "Aloha");
+
+        Logger.t(TAG).i("initView");
     }
 
     @Nullable
