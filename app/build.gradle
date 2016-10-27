@@ -69,4 +69,9 @@ dependencies {
 
     //
     compile 'com.jakewharton:disklrucache:2.0.2'
+
+
+    //rxandroid
+    compile 'io.reactivex:rxandroid:1.2.1'
+    compile 'io.reactivex:rxjava:1.2.1'
 }

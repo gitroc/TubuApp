@@ -26,10 +26,10 @@
     <string name="ptr_header_refreshing">刷新中</string>
     <string name="ptr_header_refresh_complete">更新完成</string>
 
-    <string name="cube_ptr_last_update">上次更新:&#160;</string>
-    <string name="cube_ptr_seconds_ago">&#160;秒之前</string>
-    <string name="cube_ptr_minutes_ago">&#160;分钟之前</string>
-    <string name="cube_ptr_hours_ago">&#160;小时之前</string>
+    <string name="ptr_last_update">上次更新:&#160;</string>
+    <string name="ptr_seconds_ago">&#160;秒之前</string>
+    <string name="ptr_minutes_ago">&#160;分钟之前</string>
+    <string name="ptr_hours_ago">&#160;小时之前</string>
 
     <string name="ptr_footer_normal">松开载入更多</string>
     <string name="ptr_footer_loading">加载中</string>
