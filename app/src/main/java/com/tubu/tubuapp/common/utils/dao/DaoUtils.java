@@ -2,14 +2,11 @@ package com.tubu.tubuapp.common.utils.dao;
 
 import android.content.Context;
 
-import com.tubu.tubuapp.common.utils.dao.greendao.DaoMaster;
+import com.orhanobut.logger.Logger;
 import com.tubu.tubuapp.common.utils.dao.manager.DBManager;
 import com.tubu.tubuapp.module.user.entity.User;
 
 import java.util.List;
-
-import timber.log.Timber;
-
 /**
  * @Description: 数据库通用单例
  * @Copyright: Copyright (c) 2016 chexiang.com. All right reserved.
@@ -29,11 +26,11 @@ public class DaoUtils {
             user.setAge(i * 3);
             user.setName("the " + i + " person");
             dbManager.insertUser(user);
-            Timber.i(TAG, "insertUser");
+            Logger.t(TAG).i("insertUser");
         }
         List<User> userList = dbManager.queryUserList();
         for (User user : userList) {
-            Timber.i(TAG, "queryUserList--before-->" + user.getId() + "--" + user.getName() +"--"+user.getAge());
+            Logger.t(TAG).i("queryUserList--before-->" + user.getId() + "--" + user.getName() +"--"+user.getAge());
             if (user.getId() == 0) {
                 dbManager.deleteUser(user);
             }
@@ -44,7 +41,7 @@ public class DaoUtils {
         }
         userList = dbManager.queryUserList();
         for (User user : userList) {
-            Timber.i(TAG, "queryUserList--after--->" + user.getId() + "---" + user.getName()+"--"+user.getAge());
+            Logger.t(TAG).i("queryUserList--after--->" + user.getId() + "---" + user.getName()+"--"+user.getAge());
         }
     }
 }

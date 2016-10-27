@@ -1,15 +1,13 @@
 package com.tubu.tubuapp.base;
 
-import android.app.Fragment;
 import android.view.View;
 import android.widget.TextView;
 
+import com.orhanobut.logger.Logger;
 import com.tubu.tubuapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import timber.log.Timber;
 
 /**
  * @Description: TODO describe this class
@@ -102,8 +100,7 @@ public class BaseFragmentTop {
     }
 
     private void setOnClickListener() {
-        Timber.i(TAG, "currentIndex = " + currentIndex);
-
+        Logger.t(TAG).i("currentIndex = " + currentIndex);
         tvFramentOne.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

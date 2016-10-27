@@ -4,7 +4,7 @@ import android.content.Context;
 import android.os.Build;
 import android.telephony.TelephonyManager;
 
-import timber.log.Timber;
+import com.orhanobut.logger.Logger;
 
 /**
  * @Description: 手机设备信息
@@ -23,7 +23,7 @@ public class PhoneInfo {
      */
     public static int getWidth(Context context) {
         int width = context.getResources().getDisplayMetrics().widthPixels;
-        Timber.i(TAG, "屏幕宽度" + String.valueOf(width));
+        Logger.t(TAG).i("屏幕宽度" + String.valueOf(width));
         return width;
     }
 
@@ -34,7 +34,7 @@ public class PhoneInfo {
      */
     public static int getHeight(Context context) {
         int height = context.getResources().getDisplayMetrics().heightPixels;
-        Timber.i(TAG, "屏幕高度" + String.valueOf(height));
+        Logger.t(TAG).i("屏幕高度" + String.valueOf(height));
         return height;
     }
 
@@ -45,7 +45,7 @@ public class PhoneInfo {
      */
     public static float getDensity(Context context) {
         float density = context.getResources().getDisplayMetrics().density;
-        Timber.i(TAG, "屏幕密度" + String.valueOf(density));
+        Logger.t(TAG).i("屏幕密度" + String.valueOf(density));
         return density;
     }
     /**
@@ -56,7 +56,7 @@ public class PhoneInfo {
     public static String getImei(Context context) {
         TelephonyManager tm = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
         String imei = tm.getDeviceId();
-        Timber.i(TAG, "IMEI" + imei);
+        Logger.t(TAG).i("IMEI" + imei);
         return imei;
     }
 
@@ -67,7 +67,7 @@ public class PhoneInfo {
     public static String getModel() {
         Build bd = new Build();
         String mode = bd.MODEL;
-        Timber.i(TAG, "MODEL" + mode);
+        Logger.t(TAG).i("MODEL" + mode);
         return mode;
     }
 
@@ -78,7 +78,7 @@ public class PhoneInfo {
     public static String getDisplay() {
         Build bd = new Build();
         String display = bd.DISPLAY;
-        Timber.i(TAG, "DISPLAY" + display);
+        Logger.t(TAG).i("DISPLAY" + display);
         return display;
     }
 
@@ -88,7 +88,7 @@ public class PhoneInfo {
      */
     public static String getManufacturer() {
         String manufacturer = android.os.Build.MANUFACTURER;
-        Timber.i(TAG, "制造厂商" + manufacturer);
+        Logger.t(TAG).i("制造厂商" + manufacturer);
         return manufacturer;
     }
 
@@ -98,7 +98,7 @@ public class PhoneInfo {
      */
     public static String getOsVersion() {
         String osVersion = android.os.Build.VERSION.RELEASE;
-        Timber.i(TAG, "Android系统版本" + osVersion);
+        Logger.t(TAG).i("Android系统版本" + osVersion);
         return osVersion;
     }
 

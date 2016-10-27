@@ -5,9 +5,8 @@ import android.support.annotation.CallSuper;
 import android.support.annotation.Nullable;
 import android.view.View;
 
+import com.orhanobut.logger.Logger;
 import com.tubu.tubuapp.R;
-
-import timber.log.Timber;
 
 /**
  * @Description: BaseTabFragment
@@ -34,11 +33,11 @@ public class BaseTabFragment<T extends View> extends BaseFragment {
 
     @CallSuper
     public void onSelected() {
-        Timber.i(TAG, toString() + "onSelected");
+        Logger.t(TAG).i(toString() + "onSelected");
     }
 
     public void setTitlebar(T titlebar) {
-        Timber.i(TAG, toString() + "setTitlebar");
+        Logger.t(TAG).i(toString() + "setTitlebar");
         this.titlebar = titlebar;
     }
 }

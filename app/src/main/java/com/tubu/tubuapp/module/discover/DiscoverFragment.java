@@ -11,10 +11,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.orhanobut.logger.Logger;
 import com.tubu.tubuapp.R;
 import com.tubu.tubuapp.base.BaseTabFragment;
 import com.tubu.tubuapp.common.utils.toast.ToastUtils;
 import com.tubu.tubuapp.module.main.listener.TabListener;
+
+import rx.Observer;
 
 /**
  * @Description: 发现频道
@@ -25,6 +28,7 @@ import com.tubu.tubuapp.module.main.listener.TabListener;
  * @Update: 2016/7/1 15:06
  */
 public class DiscoverFragment extends BaseTabFragment<Toolbar> implements TabListener {
+    private String TAG = "[DiscoverFragment]";
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -39,7 +43,22 @@ public class DiscoverFragment extends BaseTabFragment<Toolbar> implements TabLis
 
     @Override
     public void initView() {
+        Observer<String> observer = new Observer<String>() {
+            @Override
+            public void onCompleted() {
+                Logger.t(TAG).i("onCompleted");
+            }
 
+            @Override
+            public void onError(Throwable e) {
+                Logger.t(TAG).i("onError");
+            }
+
+            @Override
+            public void onNext(String s) {
+                Logger.t(TAG).i("Item: " + s);
+            }
+        };
     }
 
     @Nullable

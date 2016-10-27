@@ -1,14 +1,11 @@
 package com.tubu.tubuapp.module.main;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 
-import com.github.johnpersano.supertoasts.library.Style;
-import com.github.johnpersano.supertoasts.library.SuperToast;
+import com.orhanobut.logger.Logger;
 import com.tubu.tubuapp.R;
 import com.tubu.tubuapp.base.BaseTabActivity;
 import com.tubu.tubuapp.base.BaseTabFragment;
@@ -19,8 +16,6 @@ import com.tubu.tubuapp.module.main.listener.TabListener;
 import com.tubu.tubuapp.module.mall.MallFragment;
 import com.tubu.tubuapp.module.sport.SportFragment;
 import com.tubu.tubuapp.module.user.UserFragment;
-
-import timber.log.Timber;
 
 public class MainActivity extends BaseTabActivity<Toolbar> {
 
@@ -78,7 +73,7 @@ public class MainActivity extends BaseTabActivity<Toolbar> {
 
     @Override
     protected BaseTabFragment initFragment(int position) {
-        Timber.i(TAG, toString() + "initFragment. position:" + position);
+        Logger.t(TAG).i("initFragment. position:" + position);
         BaseTabFragment[] fragments = new BaseTabFragment[]{new DynamicFragment(),
                 new MallFragment(),
                 new SportFragment(),
@@ -90,7 +85,7 @@ public class MainActivity extends BaseTabActivity<Toolbar> {
 
     @Override
     protected void onFragmentSelected(int position) {
-        Timber.i(TAG, toString() + "onFragmentSelected. position:" + position);
+        Logger.t(TAG).i(toString() + "onFragmentSelected. position:" + position);
 //        if ((position == 1 || position == 2) && !MyApp.isLogin) {
 //            Intent loginIntent = new Intent(MainActivity.this, LoginActivity.class);
 //            loginIntent.putExtra("changeTab", position);

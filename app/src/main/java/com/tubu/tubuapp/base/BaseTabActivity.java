@@ -8,10 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
+import com.orhanobut.logger.Logger;
 import com.tubu.tubuapp.R;
 import com.tubu.tubuapp.module.main.manager.TabManager;
-
-import timber.log.Timber;
 
 /**
  * @Description: Tab布局基类
@@ -22,6 +21,7 @@ import timber.log.Timber;
  * @Update: 2016/7/1 17:37
  */
 public abstract class BaseTabActivity <T extends View> extends BaseActivity {
+    private String TAG = "[BaseTabActivity]";
     private static final int TAB_SIZE_MIN = 3;
     private static final int TAB_SIZE_MAX = 5;
 
@@ -86,7 +86,7 @@ public abstract class BaseTabActivity <T extends View> extends BaseActivity {
 
             @Override
             public void onPageSelected(int position) {
-                Timber.i("main", "onPageSelected1===,position:" + position);
+                Logger.t(TAG).i("onPageSelected1===,position:" + position);
                 tabManager.select(position);
                 Fragment f = getFragment(position);
                 ((BaseTabFragment) f).onSelected();
@@ -108,13 +108,13 @@ public abstract class BaseTabActivity <T extends View> extends BaseActivity {
 
         @Override
         public Fragment getItem(int position) {
-            Timber.i("main", "getItem===" + position);
+            Logger.t(TAG).i("getItem===" + position);
             return initFragment(position);
         }
 
         @Override
         public Fragment instantiateItem(ViewGroup container, int position) {
-            Timber.i("main", "instantiateItem===,position:" + position);
+            Logger.t(TAG).i("instantiateItem===,position:" + position);
             Fragment obj = (Fragment) super.instantiateItem(container, position);
             ((BaseTabFragment) obj).setTitlebar(titlebar);
             return obj;

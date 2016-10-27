@@ -11,9 +11,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.bumptech.glide.Glide;
+import com.orhanobut.logger.Logger;
 import com.tubu.tubuapp.R;
-
-import timber.log.Timber;
 
 /**
  * @Description: BaseFragment基类
@@ -48,7 +47,7 @@ public abstract class BaseFragment extends Fragment {
             if (showLoading) {
                 layLoading = (LinearLayout) view.findViewById(R.id.layLoading);
                 ivLoading = (ImageView) view.findViewById(R.id.ivLoading);
-                Timber.i(TAG, "show loading page");
+                Logger.t(TAG).i("show loading page");
                 startLoading();
             }
             initView();
