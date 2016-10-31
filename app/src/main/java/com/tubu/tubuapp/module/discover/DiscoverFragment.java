@@ -9,7 +9,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import com.orhanobut.logger.Logger;
 import com.tubu.tubuapp.R;
@@ -18,8 +17,8 @@ import com.tubu.tubuapp.common.utils.toast.ToastUtils;
 import com.tubu.tubuapp.module.main.listener.TabListener;
 
 import rx.Observable;
-import rx.Observer;
-import rx.Subscriber;
+import rx.functions.Action1;
+import rx.functions.Func1;
 
 /**
  * @Description: 发现频道
@@ -31,6 +30,7 @@ import rx.Subscriber;
  */
 public class DiscoverFragment extends BaseTabFragment<Toolbar> implements TabListener {
     private String TAG = "[DiscoverFragment]";
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -45,43 +45,13 @@ public class DiscoverFragment extends BaseTabFragment<Toolbar> implements TabLis
 
     @Override
     public void initView() {
-        Observer<String> observer = new Observer<String>() {
-            @Override
-            public void onCompleted() {
-                Logger.t(TAG).i("onCompleted");
-            }
-
-            @Override
-            public void onError(Throwable e) {
-                Logger.t(TAG).i("onError");
-            }
-
-            @Override
-            public void onNext(String s) {
-                Logger.t(TAG).i("Item: " + s);
-            }
-        };
-
-        Observable observable = Observable.create(new Observable.OnSubscribe<String>() {
-            @Override
-            public void call(Subscriber<? super String> subscriber) {
-                subscriber.onNext("Hello");
-                subscriber.onNext("Hi");
-                subscriber.onNext("Aloha");
-                subscriber.onCompleted();
-            }
-        });
-
-        Observable.just("Hello", "Hi", "Aloha");
-
-        Logger.t(TAG).i("initView");
+        TestRxAndroid();
     }
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-//        return super.onCreateView(inflater, container, savedInstanceState);
-        return inflater.inflate(R.layout.discover_layout, null);
+        return createView(inflater, R.layout.discover_layout, true);
     }
 
     @Override
@@ -102,5 +72,30 @@ public class DiscoverFragment extends BaseTabFragment<Toolbar> implements TabLis
     @Override
     public void setTitlebar(Toolbar titlebar) {
         super.setTitlebar(titlebar);
+    }
+
+
+    private void TestRxAndroid() {
+        Observable.just("hello word")
+                .map(new Func1<String, Integer>() {
+                    @Override
+                    public Integer call(String s) {
+                        Logger.i("String to Integer");
+                        return s.hashCode();
+                    }
+                })
+                .map(new Func1<Integer, String>() {
+                    @Override
+                    public String call(Integer integer) {
+                        Logger.i("Integer to String");
+                        return integer.toString();
+                    }
+                })
+                .subscribe(new Action1<String>() {
+                    @Override
+                    public void call(String s) {
+                        Logger.i(s);
+                    }
+                });
     }
 }
