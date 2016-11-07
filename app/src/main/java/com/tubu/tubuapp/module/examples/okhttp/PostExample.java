@@ -1,6 +1,4 @@
-package com.tubu.tubuapp.common.utils.net.okhttp;
-
-import com.tubu.tubuapp.common.utils.net.JsonNetRequest;
+package com.tubu.tubuapp.module.examples.okhttp;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.tubu.tubuapp.common.utils.net.okhttp;
+package com.tubu.tubuapp.module.examples.okhttp;
 
 import java.io.IOException;
 

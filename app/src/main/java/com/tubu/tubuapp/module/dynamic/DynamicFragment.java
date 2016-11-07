@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.tubu.tubuapp.R;
 import com.tubu.tubuapp.base.BaseTabFragment;
 import com.tubu.tubuapp.module.dynamic.controller.DynamicController;
+import com.tubu.tubuapp.module.examples.rxandroid.RxJava;
 import com.tubu.tubuapp.module.main.listener.TabListener;
 
 /**
@@ -56,5 +57,7 @@ public class DynamicFragment extends BaseTabFragment<Toolbar> implements TabList
     @Override
     public void initView() {
         new DynamicController(this, view);
+
+        RxJava.testRxJava27();
     }
 }

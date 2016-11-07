@@ -17,6 +17,7 @@ import com.tubu.tubuapp.common.utils.toast.ToastUtils;
 import com.tubu.tubuapp.module.main.listener.TabListener;
 
 import rx.Observable;
+import rx.Subscriber;
 import rx.functions.Action1;
 import rx.functions.Func1;
 
@@ -45,7 +46,7 @@ public class DiscoverFragment extends BaseTabFragment<Toolbar> implements TabLis
 
     @Override
     public void initView() {
-        TestRxAndroid();
+        stopLoading();
     }
 
     @Nullable
@@ -72,30 +73,5 @@ public class DiscoverFragment extends BaseTabFragment<Toolbar> implements TabLis
     @Override
     public void setTitlebar(Toolbar titlebar) {
         super.setTitlebar(titlebar);
-    }
-
-
-    private void TestRxAndroid() {
-        Observable.just("hello word")
-                .map(new Func1<String, Integer>() {
-                    @Override
-                    public Integer call(String s) {
-                        Logger.i("String to Integer");
-                        return s.hashCode();
-                    }
-                })
-                .map(new Func1<Integer, String>() {
-                    @Override
-                    public String call(Integer integer) {
-                        Logger.i("Integer to String");
-                        return integer.toString();
-                    }
-                })
-                .subscribe(new Action1<String>() {
-                    @Override
-                    public void call(String s) {
-                        Logger.i(s);
-                    }
-                });
     }
 }
