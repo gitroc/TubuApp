@@ -2,8 +2,12 @@ package com.tubu.tubuapp.module.examples.rxandroid;
 
 import com.orhanobut.logger.Logger;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
 import rx.Observable;
@@ -654,5 +658,9 @@ public class RxJava {
                 Logger.t(TAG).v("rx_just  = " + o);
             }
         });
+    }
+
+    public static void testRxJava28() {
+        //no code here
     }
 }

@@ -58,6 +58,6 @@ public class DynamicFragment extends BaseTabFragment<Toolbar> implements TabList
     public void initView() {
         new DynamicController(this, view);
 
-        RxJava.testRxJava27();
+        RxJava.testRxJava28();
     }
 }
